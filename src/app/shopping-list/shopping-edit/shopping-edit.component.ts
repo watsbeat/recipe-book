@@ -13,17 +13,17 @@ export class ShoppingEditComponent implements OnInit {
 
   ngOnInit() {}
 
-  onAdd(name: string, amount: number) {
+  onAddItem(name: string, amount: number) {
     this.ingredients.push(
       new Ingredient(name, amount)
     );
   }
 
-  onDelete() {
+  onDeleteItem() {
     this.ingredients.pop();
   }
 
-  onClear() {
+  onClearItem() {
     this.ingredients.splice(0, this.ingredients.length);
   }
 

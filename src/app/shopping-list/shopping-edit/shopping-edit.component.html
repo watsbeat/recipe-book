@@ -13,9 +13,27 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <button type="submit" class="btn btn-success mr-2" (click)="onAdd(nameInput.value, amountInput.value)">Add</button>
-          <button type="button" class="btn btn-danger mr-2" (click)="onDelete()">Delete</button>
-          <button type="button" class="btn btn-primary mr-2" (click)="onClear()">Clear</button>
+          <button
+            type="submit"
+            class="btn btn-success mr-2"
+            (click)="onAddItem(nameInput.value, amountInput.value)"
+          >
+            Add
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger mr-2"
+            (click)="onDeleteItem()"
+          >
+            Delete
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary mr-2"
+            (click)="onClearItem()"
+          >
+            Clear
+          </button>
         </div>
       </div>
     </form>
