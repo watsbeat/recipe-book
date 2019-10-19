@@ -10,7 +10,7 @@ export class AppComponent {
 
   constructor() {}
 
-  onNavigate(event: string) {
-    this.loadedSection = event;
+  onNavigate(section: string) {
+    this.loadedSection = section;
   }
 }
