@@ -1,9 +1,11 @@
-<app-header (changed)="navigateTo($event)"></app-header>
+<app-header (selectedSection)="onNavigate($event)"></app-header>
 <div class="container" style="padding-top: 25px;">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes *ngIf="section === 'Recipes'"></app-recipes>
-      <app-shopping-list *ngIf="section === 'Shopping List'"></app-shopping-list>
+      <app-recipes *ngIf="loadedSection === 'Recipes'"></app-recipes>
+      <app-shopping-list
+        *ngIf="loadedSection === 'Shopping List'"
+      ></app-shopping-list>
     </div>
   </div>
 </div>

@@ -6,20 +6,19 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  @Output() changed: EventEmitter<string> = new EventEmitter<string>();
+  @Output() selectedSection = new EventEmitter<string>();
   collapsed = true;
 
   constructor() {}
 
   ngOnInit() {
     const animatedIcon = document.querySelector('.animated-icon');
-    animatedIcon.addEventListener('click', event => {
+    animatedIcon.addEventListener('click', (event: MouseEvent) => {
       animatedIcon.classList.toggle('open');
     });
   }
 
-  onChange(event: Element) {
-    const section = event.innerHTML;
-    this.changed.emit(section);
+  onSelect(section: string) {
+    this.selectedSection.emit(section);
   }
 }
