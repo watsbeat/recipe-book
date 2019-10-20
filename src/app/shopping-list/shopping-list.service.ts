@@ -18,13 +18,18 @@ export class ShoppingListService {
     this.ingredientsChanged.emit(this.ingredients.slice());
   }
 
+  addIngredients(ingredients: Ingredient[]) {
+    this.ingredients.push(...ingredients);
+    this.ingredientsChanged.emit(this.ingredients);
+  }
+
   deleteIngredient() {
     this.ingredients.pop();
     this.ingredientsChanged.emit(this.ingredients.slice());
   }
 
   clearIngredients() {
-    this.ingredients.splice(0, this. ingredients.length);
+    this.ingredients.splice(0, this.ingredients.length);
     this.ingredientsChanged.emit(this.ingredients.slice());
   }
 }
