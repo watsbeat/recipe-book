@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
 import { Ingredient } from 'src/app/shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list.service';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -9,26 +10,27 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
 export class ShoppingEditComponent implements OnInit {
   @ViewChild('nameInput', {static: false}) nameInputRef: ElementRef;
   @ViewChild('amountInput', {static: false}) amountInputRef: ElementRef;
-  @Output() ingredientAdded = new EventEmitter<Ingredient>();
-  @Input() ingredientsArray: Ingredient[];
+  ingredients: Ingredient[];
 
-  constructor() { }
+  constructor(private shoppingListService: ShoppingListService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.ingredients = this.shoppingListService.getIngredients();
+  }
 
-  onAddItem() {
-    const name = this.nameInputRef.nativeElement.value;
-    const amount = this.amountInputRef.nativeElement.value;
+  onAddIngredient() {
+    const name: string = this.nameInputRef.nativeElement.value;
+    const amount: number = this.amountInputRef.nativeElement.valueAsNumber;
     const newIngredient = new Ingredient(name, amount);
-    this.ingredientAdded.emit(newIngredient);
+    this.shoppingListService.addIngredient(newIngredient);
   }
 
-  onDeleteItem() {
-    this.ingredientsArray.pop();
+  onDeleteIngredient() {
+    this.shoppingListService.deleteIngredient();
   }
 
-  onClearItem() {
-    this.ingredientsArray.splice(0, this.ingredientsArray.length);
+  onClearIngredients() {
+    this.shoppingListService.clearIngredients();
   }
 
 }
