@@ -14,14 +14,14 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <div class="btn-group">
-        <button class="btn btn-primary dropdown-toggle">
+      <div class="btn-group" appDropdown #r="appDropdown">
+        <button class="btn btn-primary dropdown-toggle mb-2">
           Manage Recipe
         </button>
-        <ul class="dropdown-menu">
-          <a href="#">To Shopping List</a>
-          <a href="#">Edit Recipe</a>
-          <a href="#">Delete Recipe</a>
+        <ul class="dropdown-menu" [ngClass]="{ show: r.isOpen }">
+          <a class="dropdown-item" href="#">To Shopping List</a>
+          <a class="dropdown-item" href="#">Edit Recipe</a>
+          <a class="dropdown-item" href="#">Delete Recipe</a>
         </ul>
       </div>
     </div>
