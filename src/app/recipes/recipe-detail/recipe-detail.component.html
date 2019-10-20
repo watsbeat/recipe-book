@@ -19,7 +19,7 @@
           Manage Recipe
         </button>
         <ul class="dropdown-menu" [ngClass]="{ show: r.isOpen }">
-          <a class="dropdown-item" href="#" (click)="onToShoppingList()">To Shopping List</a>
+          <a class="dropdown-item" (click)="onToShoppingList()" style="cursor: pointer;">To Shopping List</a>
           <a class="dropdown-item" href="#">Edit Recipe</a>
           <a class="dropdown-item" href="#">Delete Recipe</a>
         </ul>
