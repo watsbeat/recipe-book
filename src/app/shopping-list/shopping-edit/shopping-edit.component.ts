@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
@@ -7,24 +7,28 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
   styleUrls: ['./shopping-edit.component.scss']
 })
 export class ShoppingEditComponent implements OnInit {
-  @Input() ingredients: Ingredient[];
+  @ViewChild('nameInput', {static: false}) nameInputRef: ElementRef;
+  @ViewChild('amountInput', {static: false}) amountInputRef: ElementRef;
+  @Output() ingredientAdded = new EventEmitter<Ingredient>();
+  @Input() ingredientsArray: Ingredient[];
 
   constructor() { }
 
   ngOnInit() {}
 
-  onAddItem(name: string, amount: number) {
-    this.ingredients.push(
-      new Ingredient(name, amount)
-    );
+  onAddItem() {
+    const name = this.nameInputRef.nativeElement.value;
+    const amount = this.amountInputRef.nativeElement.value;
+    const newIngredient = new Ingredient(name, amount);
+    this.ingredientAdded.emit(newIngredient);
   }
 
   onDeleteItem() {
-    this.ingredients.pop();
+    this.ingredientsArray.pop();
   }
 
   onClearItem() {
-    this.ingredients.splice(0, this.ingredients.length);
+    this.ingredientsArray.splice(0, this.ingredientsArray.length);
   }
 
 }
