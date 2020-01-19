@@ -1,5 +1,7 @@
 # RecipeBook
 
+Deployed on Heroku: [simple-reciple-book](https://simple-recipe-book.herokuapp.com/)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.8.
 
 ## Development server
